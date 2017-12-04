@@ -1,0 +1,204 @@
+{
+	"info": {
+		"name": "sys-stripe",
+		"_postman_id": "7fa1a6e5-6a5e-15b4-5a09-168f70453955",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/charges",
+			"description": "",
+			"item": [
+				{
+					"name": "success",
+					"description": "",
+					"item": [
+						{
+							"name": "list charges",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer sk_test_maePKcgpUQzKkXC87MEllsSn"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "https://api.stripe.com/v1/charges",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"charges"
+									]
+								},
+								"description": "Generated from a curl request: \ncurl https://api.stripe.com/v1/charges \\\n   -u sk_test_maePKcgpUQzKkXC87MEllsSn:"
+							},
+							"response": []
+						},
+						{
+							"name": "charges (idempotent)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Idempotency-Key",
+										"value": "3EnlqdRwu8WLeUSZ"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer sk_test_maePKcgpUQzKkXC87MEllsSn"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "amount",
+											"value": "2000",
+											"type": "text"
+										},
+										{
+											"key": "currency",
+											"value": "gbp",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Charge for mia.jackson@example.com",
+											"type": "text"
+										},
+										{
+											"key": "source",
+											"value": "tok_amex",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/charges",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"charges"
+									]
+								},
+								"description": "Generated from a curl request: \ncurl https://api.stripe.com/v1/charges \\\n   -u sk_test_maePKcgpUQzKkXC87MEllsSn: \\\n   -H \\\"Idempotency-Key: 3EnlqdRwu8WLeUSZ\\\" \\\n   -d amount=2000 \\\n   -d currency=gbp \\\n   -d description=\\\"Charge for mia.jackson@example.com\\\" \\\n   -d source=tok_amex"
+							},
+							"response": []
+						},
+						{
+							"name": "charge",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer sk_test_maePKcgpUQzKkXC87MEllsSn"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "amount",
+											"value": "300",
+											"type": "text"
+										},
+										{
+											"key": "currency",
+											"value": "gbp",
+											"type": "text"
+										},
+										{
+											"key": "source",
+											"value": "tok_amex",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Charge for mia.jackson@example.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/charges",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"charges"
+									]
+								},
+								"description": "Generated from a curl request: \ncurl https://api.stripe.com/v1/charges \\\n   -u sk_test_maePKcgpUQzKkXC87MEllsSn: \\\n   -d amount=2000 \\\n   -d currency=gbp \\\n   -d source=tok_amex \\\n   -d description=\\\"Charge for mia.jackson@example.com\\\""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "toAnalyze",
+					"description": "",
+					"item": [
+						{
+							"name": "charges/invoice.customer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer sk_test_maePKcgpUQzKkXC87MEllsSn"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "expand[]",
+											"value": "customer",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/charges/ch_1BVLZDFA2O2juMaaPoQWgmbG",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"charges",
+										"ch_1BVLZDFA2O2juMaaPoQWgmbG"
+									]
+								},
+								"description": "Generated from a curl request: \ncurl https://api.stripe.com/v1/charges/ch_1BVLZDFA2O2juMaaPoQWgmbG \\\n   -u sk_test_maePKcgpUQzKkXC87MEllsSn: \\\n   -d expand[]=customer"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		}
+	]
+}
